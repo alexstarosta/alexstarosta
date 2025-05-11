@@ -1,0 +1,33 @@
+name: update-age
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-age:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calculate and update age in README.md
+        run: |
+          BIRTHDATE='2005-04-04T19:07:47.700Z'
+          birth_seconds=$(date --date="$BIRTHDATE" +%s)
+          now_seconds=$(date +%s)
+          seconds_lived=$((now_seconds - birth_seconds))
+          DECIMAL_PLACES=5
+          age=$(echo "scale=$DECIMAL_PLACES; $seconds_lived / (365.2422 * 24 * 60 * 60)" | bc)
+          sed -i -E "s/[0-9]+\.[0-9]{$DECIMAL_PLACES}/$age/" README.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "Update README.md"
+          git push

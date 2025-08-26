@@ -1,7 +1,7 @@
 ```make
 alexstarosta@home: ~ % ./send_hello.sh
   Hey, I'm Alex (ノ°∀°)ノ⌒･*.｡. .｡.*･゜ﾟ･*☆
-  A 20.39268 year old software engineering student at the University of Waterloo
+  A 20.39324 year old software engineering student at the University of Waterloo
 alexstarosta@home: ~ % awk 'NR==1' emails.txt
   me@alexstrosta.dev
 alexstarosta@home: ~ % cat links.txt

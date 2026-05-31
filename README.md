@@ -6,6 +6,6 @@ alexstarosta@home: ~ % awk 'NR==1' emails.txt
   me@alexstarosta.dev
 alexstarosta@home: ~ % cat links.txt
   alexstarosta.dev
-  www.linkedin.com/in/alexstarosta
+  linkedin.com/in/alexstarosta
 alexstarosta@home: ~ % █
 ```
